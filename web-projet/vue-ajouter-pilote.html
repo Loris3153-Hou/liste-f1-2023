@@ -1,0 +1,38 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Liste des pilotes de Noël</title>
+  <link rel="stylesheet" href="decoration/application.css">
+  <style></style>
+</head>
+<body>
+
+  <div class="page">
+    <h1>Ajouter un pilote de Noël</h1>
+    <form id="formulaire-ajouter">
+      <fieldset>
+        <legend>Identification du pilote</legend>
+        <div>
+          <label for="pilote-nom">Nom</label>
+          <input type="text" id="pilote-nom"/>
+        </div>
+        <div>
+          <label for="pilote-marque">Marque</label>
+          <input type="text" id="pilote-marque"/>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>D&eacute;tails sur le pilote</legend>
+        <div>
+          <label for="pilote-description">Description</label>
+          <textarea id="pilote-description"></textarea>
+        </div>
+      </fieldset>
+      <input class="action" type="submit" id="enregistrer" value="Enregistrer"/>
+    </form>
+    <a href="#" class="action">Annuler et revenir &agrave; la liste</a>
+  </div>
+
+</body>
+</html>
+

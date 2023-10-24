@@ -1,0 +1,94 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Liste des pilotes de F1</title>
+  <link rel="stylesheet" href="decoration/application.css">
+  <style></style>
+  <script src="cordova.js"></script>
+  <script src="modele/Pilote.js"></script>
+  <script src="donnee/PiloteDAO.js"></script>
+  <script src="vue/VuePilote.js"></script>
+  <script src="vue/VueModifierPilote.js"></script>
+  <script src="vue/VueAjouterPilote.js"></script>
+  <script src="vue/VueListePilote.js"></script>
+  <script defer src="Application.js"></script>
+</head>
+<body>
+  <div id="page-chargement-application">Chargement de l'application pilote de F1</div>
+
+  <script type="plain/text" id="html-vue-liste-pilote">
+  <div class="page">
+    <h1>Liste des pilotes de F1</h1>
+    <a class="action" href="#ajouter-pilote">Ajouter un pilote</a>
+    <ul id="liste-pilote">
+      <li><a href="#pilote/{Pilote.id}" class="liste-pilote-item">{Pilote.nom}</a>
+        <a href="#modifier/{Pilote.id}" class="liste-pilote-item">Modifier</a></li>
+    </ul>
+  </div>
+  </script>
+
+  <script type="plain/text" id="html-vue-ajouter-pilote">
+  <div class="page">
+    <h1>Ajouter un pilote de F1</h1>
+    <form id="formulaire-ajouter">
+      <fieldset>
+        <legend>Identification du pilote</legend>
+        <div>
+          <label for="pilote-nom">Nom</label>
+          <input type="text" id="pilote-nom"/>
+        </div>
+        <div>
+          <label for="pilote-marque">Marque</label>
+          <input type="text" id="pilote-marque"/>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>D&eacute;tails sur le pilote</legend>
+        <div>
+          <label for="pilote-description">Description</label>
+          <textarea id="pilote-description"></textarea>
+        </div>
+      </fieldset>
+      <input class="action" type="submit" id="enregistrer" value="Enregistrer"/>
+    </form>
+    <a href="#" class="action">Annuler et revenir &agrave; la liste</a>
+  </div>
+  </script>
+  <script type="plain/text" id="html-vue-modifier-pilote">
+    <div class="page">
+      <h1>Modifier un pilote de F1</h1>
+      <form id="formulaire-modifier">
+        <fieldset>
+          <legend>Identification du pilote</legend>
+          <div>
+            <label for="pilote-nom">Nom</label>
+            <input type="text" id="pilote-nom"/>
+          </div>
+          <div>
+            <label for="pilote-marque">Marque</label>
+            <input type="text" id="pilote-marque"/>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>D&eacute;tails sur le pilote</legend>
+          <div>
+            <label for="pilote-description">Description</label>
+            <textarea id="pilote-description"></textarea>
+          </div>
+        </fieldset>
+        <input class="action" type="submit" id="enregistrer" value="Enregistrer"/>
+      </form>
+      <a href="#" class="action">Annuler et revenir &agrave; la liste</a>
+    </div>
+    </script>
+  <script type="plain/text" id="html-vue-pilote">
+    <div class="page">
+      <h1>Pilote de F1</h1>
+      <h2 id="pilote-nom"></h2>
+      <p id="pilote-marque"></p>
+      <p id="pilote-description"></p>
+      <a href="#" class="action">Revenir &agrave; la liste</a>
+    </div>
+    </script>
+</body>
+</html>

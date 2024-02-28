@@ -121,7 +121,7 @@ textarea {
 
 .page {
   position:relative;
-  background-color:var(--theme-blanc);
+  background-color: rgb(46, 45, 45);
   padding:5%;
   min-height: 100vh;
   box-sizing: border-box;

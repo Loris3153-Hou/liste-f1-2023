@@ -10,6 +10,11 @@
 }
 
 @font-face {
+  font-family: 'AgencyFB';
+  src: url('font/agencyfb/agencyfb_bold.ttf');
+}
+
+@font-face {
   font-family: 'Sports';
   src: url('font/sports/Sports.ttf')  format('truetype');
 }
@@ -28,8 +33,8 @@
 }
 
 html {
-  font-family:'F1-Regular';
-  font-size: 26px;
+  font-family:'AgencyFB';
+  font-size: 40px;
 }
 
 #liste-pilote {
@@ -51,7 +56,7 @@ html {
   border-radius:var(--theme-bordure-rondeur);
   padding:0.25rem;
   padding-left:1.50rem;
-  box-shadow: 2px 2px var(--theme-rouge);
+  box-shadow: 5px 5px var(--theme-rouge);
 }
 
 #liste-pilote li::before {
@@ -89,21 +94,16 @@ textarea {
 #page-chargement-application{
   position:relative;
   height:100vh;
-  background-image:url(illustration/pngwing.com.png);
-  background-repeat:no-repeat;
-  background-size:contain;
-  background-position:bottom center;
-  background-attachment:fixed;
 
   text-align:center;
   font-size:2rem;
-  font-family:'The Perfect Christmas', sans-serif;
+  font-family:'AgencyFB', sans-serif;
   font-weight:normal;
   line-height:1.8rem;
 
   padding:10%;
   color:var(--theme-blanc);
-  text-shadow: 2px 2px var(--theme-noir);
+  text-shadow: 2px 2px var(--theme-blanc);
   animation: pulse 1.5s infinite;
   animation-direction: alternate;
 }
@@ -121,23 +121,17 @@ textarea {
 
 .page {
   position:relative;
-  background-color: rgb(46, 45, 45);
+  background-color: var(--theme-blanc);
   padding:5%;
   min-height: 100vh;
   box-sizing: border-box;
-
-  background-image:url(illustration/pilote-noel.png);
-  background-repeat:no-repeat;
-  background-size:cover;
-  background-position:right bottom;
-  background-attachment:fixed;
   background-size: 50%;
   color:var(--theme-rouge);
 }
 
 
 .page h1{
-  font-family:'F1-Bold';
+  font-family:'AgencyFB';
   text-align:center;
   font-size:2rem;
   font-weight:normal;
@@ -165,7 +159,7 @@ textarea {
   color:var(--theme-blanc);
   border:0px transparent solid;
   border-radius:var(--theme-bordure-rondeur);
-  font-family:'F1-Regular';
+  font-family:'AgencyFB';
   font-size:1rem;
   text-align:center;
   width:50%;

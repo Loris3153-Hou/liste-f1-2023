@@ -13,10 +13,14 @@ class VueModifierPilote{
     }
   
     afficher(){
-      document.getElementsByTagName("body")[0].innerHTML = this.html;
+      document.getElementsByTagName("body")[0].innerHTML = this.html;   
       document.getElementById("pilote-nom").value = this.pilote.nom;
+      document.getElementById("pilote-prenom").value = this.pilote.prenom;
+      document.getElementById("pilote-age").value = this.pilote.age;
       document.getElementById("pilote-marque").value = this.pilote.marque;
-      document.getElementById("pilote-description").innerHTML = this.pilote.description;
+      document.getElementById("pilote-coequipier").value = this.pilote.coequipier;
+      document.getElementById("pilote-nat").value = this.pilote.nat;
+      document.getElementById("pilote-nbGp").value = this.pilote.nbGp;
       document.getElementById("formulaire-modifier").addEventListener("submit",evenement =>this.enregistrer(evenement));
       console.log(this.pilote.id);
     }
@@ -25,11 +29,15 @@ class VueModifierPilote{
       evenement.preventDefault();
   
       let nom = document.getElementById("pilote-nom").value;
+      let prenom = document.getElementById("pilote-prenom").value;
+      let age = document.getElementById("pilote-age").value;
       let marque = document.getElementById("pilote-marque").value;
-      let description = document.getElementById("pilote-description").value;
+      let coequipier = document.getElementById("pilote-coequipier").value;
+      let nat = document.getElementById("pilote-nat").value;
+      let nbGp = document.getElementById("pilote-nbGp").value;
       let id = this.pilote.id;
   
-      this.actionModifierPilote(new Pilote(nom, marque, description, id));
+      this.actionModifierPilote(new Pilote(nom, prenom, age, marque, coequipier, nat, nbGp, id));
   
     }
   

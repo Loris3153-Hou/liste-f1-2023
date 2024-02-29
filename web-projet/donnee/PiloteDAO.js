@@ -17,8 +17,12 @@ class PiloteDAO{
 
         for(let position in this.listePilote){
           let pilote = new Pilote(this.listePilote[position].nom,
+                                  this.listePilote[position].prenom,
+                                  this.listePilote[position].age,
                                   this.listePilote[position].marque,
-                                  this.listePilote[position].description,
+                                  this.listePilote[position].coequipier,
+                                  this.listePilote[position].nat,
+                                  this.listePilote[position].nbGp,
                                   this.listePilote[position].id);
     
           this.listePilote[pilote.id] = pilote;

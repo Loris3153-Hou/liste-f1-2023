@@ -1,0 +1,1 @@
+INSERT INTO PILOTE VALUES (0, 'Verstappen', 'Max', '24', 'RedBull', 'Perez', 'Pays-Bas', '240');

@@ -6,7 +6,36 @@ class PiloteDAO{
                           {nom:"Montre intelligente", marque:"Neo Pebble", description:"Une vraie montre intelligente open source", id:1},
                           {nom:"Lunette de réalité augmentée", marque:"Seer Glasses", description:"Des lunettes qui me montrent l'invisible", id:2}]
         */
-      this.listePilote = [];
+        this.token = "valeur";
+        this.listeObjetsPilotes = null;
+        this.listePilote = [];
+    }
+
+    listePilotes() {
+        return new Promise((resolve, reject) => {
+            var xhr = new XMLHttpRequest();
+            var apiUrl = 'https://arbre-du-savoir.shop/serveur-app-f1/controlleurs/PiloteControlleur.php?methode=getPilotes&token=' + this.token;
+
+            xhr.open('GET', apiUrl, true);
+
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        var response = xhr.responseText;
+                        this.listeObjetsPilotes = this.convertirJsonEnString(response);
+                        console.log(this.listeObjetsPilotes);
+                        for (let pilote of this.listeObjetsPilotes) {
+                            console.log('ID du joueur :', pilote.getIdPilote());
+                        }
+                        resolve();
+                    } else {
+                        reject('La requête a échoué.');
+                    }
+                }
+            };
+
+            xhr.send();
+        });
     }
 
     lister(){
@@ -49,5 +78,25 @@ class PiloteDAO{
     this.listePilote[pilote.id] = pilote;
     localStorage['pilote'] = JSON.stringify(this.listePilote);
     console.log("JSON.stringify(this.listePilote) : " + JSON.stringify(this.listePilote));
+    }
+
+    convertirJsonEnString(jsonInput) {
+        var listeObjetsPilotes = JSON.parse(jsonInput).map(jsonPilote => {
+            const pilote = new Pilote();
+            pilote.setIdPilote(jsonPilote.idPilote);
+            pilote.setNomPilote(jsonPilote.nomPilote);
+            pilote.setPrenomPilote(jsonPilote.prenomPilote);
+            pilote.setAgePilote(jsonPilote.agePilote);
+            pilote.setMarquePilote(jsonPilote.marquePilote);
+            pilote.setCoequipierPilote(jsonPilote.coequipierPilote);
+            pilote.setNatPilote(jsonPilote.natPilote);
+            pilote.setNbGpPilote(jsonPilote.nbGpPilote);
+            return pilote;
+        });
+        return listeObjetsPilotes;
+    }
+
+    getListeObjetsPilotes() {
+        return this.listeObjetsPilotes;
     }
 }

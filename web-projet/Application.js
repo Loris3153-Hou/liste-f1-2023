@@ -36,7 +36,7 @@ class Application {
       let navigation = hash.match(/^#pilote\/([0-9]+)/);
       let idPilote = navigation[1];
 
-      this.vuePilote.initialiserPilote(this.piloteDAO.lister()[idPilote]);
+      this.vuePilote.initialiserPilote(idPilote);
       this.vuePilote.afficher();
 
     }

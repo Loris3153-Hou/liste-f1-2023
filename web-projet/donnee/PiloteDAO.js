@@ -62,10 +62,31 @@ class PiloteDAO{
     }
 
     modifier(pilote){
-        console.log("json2" + JSON.stringify(pilote));
         return new Promise((resolve, reject) => {
             var xhr = new XMLHttpRequest();
             var apiUrl = 'https://arbre-du-savoir.shop/serveur-app-f1/controlleurs/PiloteControlleur.php?methode=modifierPilote&pilote='+ JSON.stringify(pilote) + '&token=' + this.token;
+
+            
+            xhr.open('GET', apiUrl, true);
+
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        resolve();
+                    } else {
+                        reject('La requête a échoué.');
+                    }
+                }
+            };
+
+            xhr.send();
+        });
+    }
+
+    ajouter(pilote){
+        return new Promise((resolve, reject) => {
+            var xhr = new XMLHttpRequest();
+            var apiUrl = 'https://arbre-du-savoir.shop/serveur-app-f1/controlleurs/PiloteControlleur.php?methode=ajouterPilote&pilote='+ JSON.stringify(pilote) + '&token=' + this.token;
 
             
             xhr.open('GET', apiUrl, true);
@@ -106,7 +127,7 @@ class PiloteDAO{
         return this.listePilote;
     }
 
-    ajouter(pilote)
+    /*ajouter(pilote)
     {
     // il faut ici attribuer un id au pilote
     if(this.listePilote.length > 0)
@@ -117,7 +138,7 @@ class PiloteDAO{
     this.listePilote[pilote.id] = pilote;
     localStorage['pilote'] = JSON.stringify(this.listePilote);
     console.log("JSON.stringify(this.listePilote) : " + JSON.stringify(this.listePilote));
-    }
+    }*/
 
     /*modifier(pilote){
 

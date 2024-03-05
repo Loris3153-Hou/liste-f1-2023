@@ -34,13 +34,27 @@ if (isset($_GET["token"])){
                     $idPilote = $piloteData['idPilote'];
                     $nomPilote = $piloteData['nomPilote'];
                     $prenomPilote = $piloteData['prenomPilote'];
-                    $agePilote = $piloteData['agePilote'];
-                    echo "<script>console.log('agePilote: " . $agePilote . "');</script>";
-                    $marquePilote = $piloteData['marquePilote'];
+                    $agePilote = $piloteData['agePilote']; $marquePilote = $piloteData['marquePilote'];
                     $coequipierPilote = $piloteData['coequipierPilote'];
                     $natPilote = $piloteData['natPilote'];
                     $nbGpPilote = $piloteData['nbGpPilote'];
                     $utilisateur = $PiloteDAO->updatePilote($nomPilote, $prenomPilote, $agePilote, $marquePilote, $coequipierPilote, $natPilote, $nbGpPilote, $idPilote);
+                    $util = json_encode($utilisateur);
+                }
+            }
+
+            if ($_GET["methode"] == "ajouterPilote") {
+                if (isset($_GET["pilote"])) {
+
+                    $piloteData = json_decode($_GET["pilote"], true);
+                
+                    $nomPilote = $piloteData['nomPilote'];
+                    $prenomPilote = $piloteData['prenomPilote'];
+                    $agePilote = $piloteData['agePilote'];$marquePilote = $piloteData['marquePilote'];
+                    $coequipierPilote = $piloteData['coequipierPilote'];
+                    $natPilote = $piloteData['natPilote'];
+                    $nbGpPilote = $piloteData['nbGpPilote'];
+                    $utilisateur = $PiloteDAO->insertPilote($nomPilote, $prenomPilote, $agePilote, $marquePilote, $coequipierPilote, $natPilote, $nbGpPilote);
                     $util = json_encode($utilisateur);
                 }
             }

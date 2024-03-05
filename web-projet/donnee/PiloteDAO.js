@@ -23,10 +23,56 @@ class PiloteDAO{
                     if (xhr.status >= 200 && xhr.status < 300) {
                         var response = xhr.responseText;
                         this.listeObjetsPilotes = this.convertirJsonEnString(response);
-                        console.log(this.listeObjetsPilotes);
                         for (let pilote of this.listeObjetsPilotes) {
                             console.log('ID du joueur :', pilote.getIdPilote());
                         }
+                        resolve();
+                    } else {
+                        reject('La requête a échoué.');
+                    }
+                }
+            };
+
+            xhr.send();
+        });
+    }
+
+    getPilote(id) {
+        return new Promise((resolve, reject) => {
+            var xhr = new XMLHttpRequest();
+            var apiUrl = 'https://arbre-du-savoir.shop/serveur-app-f1/controlleurs/PiloteControlleur.php?methode=getPilote&id='+ id + '&token=' + this.token;
+
+            
+            xhr.open('GET', apiUrl, true);
+
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        var response = xhr.responseText;
+                        this.listeObjetsPilotes = this.convertirJsonEnString(response);
+                        resolve();
+                    } else {
+                        reject('La requête a échoué.');
+                    }
+                }
+            };
+
+            xhr.send();
+        });
+    }
+
+    modifier(pilote){
+        console.log("json2" + JSON.stringify(pilote));
+        return new Promise((resolve, reject) => {
+            var xhr = new XMLHttpRequest();
+            var apiUrl = 'https://arbre-du-savoir.shop/serveur-app-f1/controlleurs/PiloteControlleur.php?methode=modifierPilote&pilote='+ JSON.stringify(pilote) + '&token=' + this.token;
+
+            
+            xhr.open('GET', apiUrl, true);
+
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
                         resolve();
                     } else {
                         reject('La requête a échoué.');
@@ -73,12 +119,12 @@ class PiloteDAO{
     console.log("JSON.stringify(this.listePilote) : " + JSON.stringify(this.listePilote));
     }
 
-    modifier(pilote){
+    /*modifier(pilote){
 
     this.listePilote[pilote.id] = pilote;
     localStorage['pilote'] = JSON.stringify(this.listePilote);
     console.log("JSON.stringify(this.listePilote) : " + JSON.stringify(this.listePilote));
-    }
+    }*/
 
     convertirJsonEnString(jsonInput) {
         var listeObjetsPilotes = JSON.parse(jsonInput).map(jsonPilote => {

@@ -25,7 +25,6 @@ class Application {
 
     if(!hash){
 
-      this.vueListePilote.initialiserListePilote(this.piloteDAO.lister());
       this.vueListePilote.afficher();
 
     }else if(hash.match(/^#ajouter-pilote/)){
@@ -44,8 +43,7 @@ class Application {
     else {
       let navigation = hash.match(/^#modifier\/([0-9]+)/);
       let idPilote = navigation[1];
-
-      this.vueModifierPilote.initialiserPilote(this.piloteDAO.lister()[idPilote]);
+      this.vueModifierPilote.initialiserPilote(idPilote);
       this.vueModifierPilote.afficher();
     }
   }

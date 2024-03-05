@@ -31,9 +31,11 @@ class VueListePilote {
 
         this.piloteDAO.listePilotes().then(() => {
             let listeDesPilotes = this.piloteDAO.getListeObjetsPilotes();
+            this.listeIdsPilotes = [];
             this.listeNomsPilotes = [];
             this.listePrenomsPilotes = [];
             for (let i = 0; i < listeDesPilotes.length; i++) {
+                this.listeIdsPilotes.push(listeDesPilotes[i].getIdPilote());
                 this.listeNomsPilotes.push(listeDesPilotes[i].getNomPilote());
                 this.listePrenomsPilotes.push(listeDesPilotes[i].getPrenomPilote());
             }
@@ -42,10 +44,12 @@ class VueListePilote {
             let listePilote = document.getElementById("liste-pilote");
             const listePiloteItemHTML = listePilote.innerHTML;
             let listePiloteHTMLRemplacement = "";
-            console.log(JSON.stringify('test'+ this.listeNomsPilotes));
+            console.log(JSON.stringify('test'+ this.listeIdsPilotes));
             for(var numeroPilote in this.listeNomsPilotes){
                 let listePiloteItemHTMLRemplacement = listePiloteItemHTML;
-                listePiloteItemHTMLRemplacement = listePiloteItemHTMLRemplacement.replace("{Pilote.nom}",this.listeNomsPilotes[numeroPilote]);
+                listePiloteItemHTMLRemplacement = listePiloteItemHTMLRemplacement.replace("{Pilote.id}",this.listeIdsPilotes[numeroPilote]);
+                listePiloteItemHTMLRemplacement = listePiloteItemHTMLRemplacement.replace("{Pilote.id}",this.listeIdsPilotes[numeroPilote]);
+                listePiloteItemHTMLRemplacement = listePiloteItemHTMLRemplacement.replace("{Pilote.nom}",this.listePrenomsPilotes[numeroPilote] + " " + this.listeNomsPilotes[numeroPilote]);
                 listePiloteHTMLRemplacement += listePiloteItemHTMLRemplacement;
             }
 

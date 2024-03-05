@@ -76,11 +76,12 @@ class PiloteDAO
 
     public function updatePilote($nomPilote, $prenomPilote, $agePilote, $marquePilote, $coequipierPilote, $natPilote, $nbGpPilote, $id)
     {
-        $sql = "UPDATE PILOTE SET PILOTE.PILOTE = ?, PILOTE.PILOTE = ?, PILOTE.PILOTE = ?,
-            PILOTE.PILOTE = ?, PILOTE.PILOTE = ?, PILOTE.PILOTE = ?, PILOTE.PILOTE = ?
-            WHERE `JOUEUR`.`id_joueur` = ?;";
+        $sql = "UPDATE PILOTE SET PILOTE.nomPilote = ?, PILOTE.prenomPilote = ?, PILOTE.agePilote = ?,
+            PILOTE.marquePilote = ?, PILOTE.coequipierPilote = ?, PILOTE.natPilote = ?, PILOTE.nbGpPilote = ?
+            WHERE `PILOTE`.`idPilote` = ?;";
         $argument = array();
         array_push($argument, $nomPilote, $prenomPilote, $agePilote, $marquePilote, $coequipierPilote, $natPilote, $nbGpPilote, $id);
+        
         return $this->executerRequete($sql, $argument);
     }
 

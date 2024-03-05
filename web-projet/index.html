@@ -115,9 +115,40 @@
   <script type="plain/text" id="html-vue-pilote">
     <div class="page">
       <h1>Pilote de F1</h1>
-      <h2 id="pilote-nom"></h2>
-      <p id="pilote-marque"></p>
-      <p id="pilote-description"></p>
+      <fieldset>
+        <legend>Identification du pilote</legend>
+        <div>
+          <label for="pilote-nom">Nom</label>
+          <input type="text" disabled="disabled" id="pilote-nom"/>
+        </div>
+        <div>
+          <label for="pilote-prenom">Prenom</label>
+          <input type="text" disabled="disabled" id="pilote-prenom"/>
+        </div>
+        <div>
+          <label for="pilote-marque">Marque</label>
+          <input type="text" disabled="disabled" id="pilote-marque"/>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>D&eacute;tails sur le pilote</legend>
+        <div>
+          <label for="pilote-age">Age</label>
+          <input type="text" disabled="disabled" id="pilote-age"/>
+        </div>
+        <div>
+          <label for="pilote-coequipier">Coequipier</label>
+          <input type="text" disabled="disabled" id="pilote-coequipier"/>
+        </div>
+        <div>
+          <label for="pilote-nat">Nationaliter</label>
+          <input type="text" disabled="disabled" id="pilote-nat"/>
+        </div>
+        <div>
+          <label for="pilote-nbGp">Nombre de gp</label>
+          <input type="text" disabled="disabled" id="pilote-nbGp"/>
+        </div>
+      </fieldset>
       <a href="#" class="action">Revenir &agrave; la liste</a>
     </div>
     </script>

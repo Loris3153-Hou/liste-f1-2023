@@ -38,10 +38,11 @@ class PiloteDAO{
     }
 
     getPilote(id) {
+        console.log("json2" + id);
+
         return new Promise((resolve, reject) => {
             var xhr = new XMLHttpRequest();
             var apiUrl = 'https://arbre-du-savoir.shop/serveur-app-f1/controlleurs/PiloteControlleur.php?methode=getPilote&id='+ id + '&token=' + this.token;
-
             
             xhr.open('GET', apiUrl, true);
 

@@ -49,6 +49,7 @@ class VueListePilote {
                 let listePiloteItemHTMLRemplacement = listePiloteItemHTML;
                 listePiloteItemHTMLRemplacement = listePiloteItemHTMLRemplacement.replace("{Pilote.id}",this.listeIdsPilotes[numeroPilote]);
                 listePiloteItemHTMLRemplacement = listePiloteItemHTMLRemplacement.replace("{Pilote.id}",this.listeIdsPilotes[numeroPilote]);
+                listePiloteItemHTMLRemplacement = listePiloteItemHTMLRemplacement.replace("{Pilote.id}",this.listeIdsPilotes[numeroPilote]);
                 listePiloteItemHTMLRemplacement = listePiloteItemHTMLRemplacement.replace("{Pilote.nom}",this.listePrenomsPilotes[numeroPilote] + " " + this.listeNomsPilotes[numeroPilote]);
                 listePiloteHTMLRemplacement += listePiloteItemHTMLRemplacement;
             }

@@ -10,6 +10,7 @@
   <script src="vue/VueModifierPilote.js"></script>
   <script src="vue/VueAjouterPilote.js"></script>
   <script src="vue/VueListePilote.js"></script>
+  <script src="vue/VueSupprimerPilote.js"></script>
   <script defer src="Application.js"></script>
 </head>
 <body>
@@ -21,7 +22,8 @@
     <a class="action" href="#ajouter-pilote">Ajouter un pilote</a>
     <ul id="liste-pilote">
       <li><a href="#pilote/{Pilote.id}" class="liste-pilote-item">{Pilote.nom}</a>
-        <a href="#modifier/{Pilote.id}" class="liste-pilote-item">Modifier</a></li>
+        <a href="#modifier/{Pilote.id}" class="liste-pilote-item">Modifier</a>
+        <a href="#supprimer/{Pilote.id}" class="liste-pilote-item">Supprimer</a></li>
     </ul>
   </div>
   </script>

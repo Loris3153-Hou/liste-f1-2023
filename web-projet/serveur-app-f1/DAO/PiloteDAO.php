@@ -85,5 +85,14 @@ class PiloteDAO
         return $this->executerRequete($sql, $argument);
     }
 
+    public function supprimerPilote($id)
+    {
+        $sql = "DELETE FROM PILOTE WHERE `PILOTE`.`idPilote` = ?;";
+        $argument = array();
+        array_push($argument, $id);
+        
+        return $this->executerRequete($sql, $argument);
+    }
+
 }
 ?>

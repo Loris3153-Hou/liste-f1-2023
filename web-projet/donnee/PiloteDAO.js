@@ -106,6 +106,29 @@ class PiloteDAO{
         });
     }
 
+    supprimer(pilote){
+        console.log('id' + pilote);
+        return new Promise((resolve, reject) => {
+            var xhr = new XMLHttpRequest();
+            var apiUrl = 'https://arbre-du-savoir.shop/serveur-app-f1/controlleurs/PiloteControlleur.php?methode=supprimerPilote&id='+ pilote + '&token=' + this.token;
+
+            
+            xhr.open('GET', apiUrl, true);
+
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        resolve();
+                    } else {
+                        reject('La requête a échoué.');
+                    }
+                }
+            };
+
+            xhr.send();
+        });
+    }
+
     lister(){
 
         if(localStorage['pilote']){

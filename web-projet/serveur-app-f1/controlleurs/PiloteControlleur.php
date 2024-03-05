@@ -59,6 +59,14 @@ if (isset($_GET["token"])){
                 }
             }
 
+            if ($_GET["methode"] == "supprimerPilote") {
+                if (isset($_GET["id"])) {
+                    $id = $_GET["id"];
+                    $utilisateur = $PiloteDAO->supprimerPilote($id);
+                    $util = json_encode($utilisateur);
+                }
+            }
+
             echo $util;
 
             //echo json_encode($PiloteDAO->getToutesPilote());

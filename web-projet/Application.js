@@ -1,6 +1,6 @@
 class Application {
 
-  constructor(window, piloteDAO, vueListePilote, vueAjouterPilote, vuePilote, vueModifierPilote){
+  constructor(window, piloteDAO, vueListePilote, vueAjouterPilote, vuePilote, vueModifierPilote, vueSupprimerPilote){
     this.window = window;
     this.piloteDAO = piloteDAO;
 
@@ -8,8 +8,10 @@ class Application {
 
     this.vueAjouterPilote = vueAjouterPilote;
     this.vueModifierPilote = vueModifierPilote;
+    this.vueSupprimerPilote = vueSupprimerPilote;
     this.vueAjouterPilote.initialiserActionAjouterPilote(pilote =>this.actionAjouterPilote(pilote));
     this.vueModifierPilote.initialiserActionModifierPilote(pilote =>this.actionModifierPilote(pilote));
+    this.vueSupprimerPilote.initialiserActionSupprimerPilote(pilote =>this.actionSupprimerPilote(pilote));
 
     this.vuePilote = vuePilote;
    
@@ -39,6 +41,13 @@ class Application {
       this.vuePilote.initialiserPilote(idPilote);
       this.vuePilote.afficher();
 
+    }else if (hash.match(/^#supprimer\/([0-9]+)/)){
+
+      let navigation = hash.match(/^#supprimer\/([0-9]+)/);
+      let idPilote = navigation[1];
+
+      this.vueSupprimerPilote.initialiserPilote(idPilote);
+      this.vueSupprimerPilote.supprimer(idPilote);
     }
     else {
       let navigation = hash.match(/^#modifier\/([0-9]+)/);
@@ -57,8 +66,13 @@ class Application {
     this.piloteDAO.modifier(pilote);
     this.window.location.hash = "#";
   }
+  
+  actionSupprimerPilote(pilote){
+    this.piloteDAO.supprimer(pilote);
+    this.window.location.hash = "#";
+  }
 }
 
 
 
-new Application(window, new PiloteDAO(), new VueListePilote(), new VueAjouterPilote(), new VuePilote(), new VueModifierPilote());
+new Application(window, new PiloteDAO(), new VueListePilote(), new VueAjouterPilote(), new VuePilote(), new VueModifierPilote(), new VueSupprimerPilote());
